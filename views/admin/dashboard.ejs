@@ -1,0 +1,34 @@
+<% include('../partials/header') %>
+<h1>Admin Dashboard</h1>
+<a href="/admin/summary" class="btn btn-primary mb-3">ดูหน้าสรุปผล</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ชื่อ</th>
+            <th>เปอร์เซ็นต์การเข้าร่วม</th>
+            <th>การจัดการ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.attendancePercentage %>%</td>
+                <td>
+                    <% user.activities.forEach(activity => { %>
+                        <form action="/admin/update-status/<%= user._id %>/<%= activity.activityId %>" method="POST">
+                            <div class="btn-group">
+                                <button class="btn btn-success" type="submit" name="status" value="มา">มา</button>
+                                <button class="btn btn-danger" type="submit" name="status" value="ไม่มา">ไม่มา</button>
+                                <button class="btn btn-warning" type="submit" name="status" value="จ่ายเงินแทน">จ่ายเงินแทน</button>
+                                <button class="btn btn-secondary" type="submit" name="status" value="ไม่ว่าง">ไม่ว่าง</button>
+                            </div>
+                            <input type="text" name="reason" placeholder="เหตุผล (ถ้ามี)" class="form-control mt-2" />
+                        </form>
+                    <% }) %>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+<% include('../partials/footer') %>
