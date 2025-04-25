@@ -12,19 +12,5 @@
         "dest": "/api/cron/updateAttendance",
         "methods": ["GET"]
       }
-    ],
-    "crons": [
-      {
-        "path": "/api/cron/updateAttendance",
-        "schedule": "0 0 * * *"
-      }
-    ],
-    "env": {
-      "NEXTAUTH_URL": "https://saschool.zoixmon.xyz",
-      "NEXTAUTH_SECRET": "7d4fcb482acf8f3e153a1e9ce9c4a04cd5c819d51c347bd23511c05352cb4ae4",
-      "MONGODB_URI": "mongodb+srv://username:password@cluster.mongodb.net/databaseName?retryWrites=true&w=majority",
-      "CRON_SECRET": "7d4fcb482acf8f3e153a1e9ce9c4a04cd5c819d51c347bd23511c05352cb4ae4",
-      "ADMIN_EMAIL": "18863@saschool.ac.th",
-      "ADMIN_PASSWORD": "sa12344321"
-    }
+    ]
   }

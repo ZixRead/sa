@@ -2,20 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gray-50;
-}
-
-/* Custom styles */
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* ป้องกันการเด้งของหน้าเมื่อใช้ anchor links */
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  /* ปุ่มสไตล์หลัก */
+  .btn-primary {
+    @apply bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  }
+
+  /* การ์ดสไตล์ */
+  .card {
+    @apply bg-white shadow rounded-lg overflow-hidden;
+  }
+}
+
+@layer utilities {
+  /* Animation สำหรับ loading spinner */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* สำหรับเนื้อหาที่ต้องซ่อนแต่ยังให้ screen reader อ่านได้ */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
   }
 }
