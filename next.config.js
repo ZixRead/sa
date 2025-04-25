@@ -2,6 +2,9 @@ const path = require('path');
 
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
