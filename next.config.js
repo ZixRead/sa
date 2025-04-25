@@ -1,19 +1,15 @@
+const path = require('path');
+
 module.exports = {
   reactStrictMode: true,
-  images: {
-    domains: ['lh3.googleusercontent.com'],
-  },
-  async headers() {
-    return [
-      {
-        source: '/api/cron/updateAttendance',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-store, max-age=0',
-          },
-        ],
-      },
-    ]
-  },
-}
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@/components': path.resolve(__dirname, 'src/components'),
+      '@/styles': path.resolve(__dirname, 'src/styles'),
+      '@/lib': path.resolve(__dirname, 'src/lib'),
+      '@/models': path.resolve(__dirname, 'src/models')
+    };
+    return config;
+  }
+};
